@@ -6,6 +6,9 @@ void ofApp::setup(){
     ofSetCircleResolution(32);
     ofEnableAlphaBlending();
     ofSetFrameRate(60);
+    
+    myBall.setPos(glm::vec2(300, 300));
+    myBall.setRadius(200);
 }
 
 //--------------------------------------------------------------
