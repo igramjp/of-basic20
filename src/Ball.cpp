@@ -3,6 +3,18 @@
 Ball::Ball() {
     pos = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
     radius = 100.0;
+    speed = glm::vec2(0, 0);
+}
+
+void Ball::update() {
+    pos += speed;
+    
+    if (pos.x < radius || pos.x > ofGetWidth() - radius) {
+        speed.x *= -1;
+    }
+    if (pos.y < radius || pos.y > ofGetHeight() - radius) {
+        speed.y *= -1;
+    }
 }
 
 void Ball::draw() {
@@ -27,4 +39,12 @@ void Ball::setRadius(float _radius) {
 
 float Ball::getRadius() {
     return radius;
+}
+
+void Ball::setSpeed(glm::vec2 _speed) {
+    speed = _speed;
+}
+
+glm::vec2 Ball::getSpeed() {
+    return speed;
 }

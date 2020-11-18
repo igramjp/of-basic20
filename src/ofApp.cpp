@@ -9,11 +9,12 @@ void ofApp::setup(){
     
     myBall.setPos(glm::vec2(300, 300));
     myBall.setRadius(200);
+    myBall.setSpeed(glm::vec2(3, 5));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    myBall.update();
 }
 
 //--------------------------------------------------------------
