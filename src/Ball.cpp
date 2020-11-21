@@ -4,9 +4,17 @@ Ball::Ball() {
     pos = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
     radius = 100.0;
     speed = glm::vec2(0, 0);
+    phaseSpeed = ofRandom(0.1, 0.5);
+    phase = 0;
 }
 
 void Ball::update() {
+    stretchedRadius = radius + sin(phase)*radius/4;
+    phase += phaseSpeed;
+    if (phase > TWO_PI) {
+        phase -= TWO_PI;
+    }
+    
     pos += speed;
     
     if (pos.x < radius || pos.x > ofGetWidth() - radius) {
@@ -19,10 +27,10 @@ void Ball::update() {
 
 void Ball::draw() {
     ofSetColor(31, 63, 255, 100);
-    ofDrawCircle(pos.x, pos.y, radius);
+    ofDrawCircle(pos.x, pos.y, stretchedRadius);
     
     ofSetColor(255, 0, 0, 200);
-    ofDrawCircle(pos.x, pos.y, radius/10.0);
+    ofDrawCircle(pos.x, pos.y, stretchedRadius/10.0);
 }
 
 void Ball::setPos(glm::vec2 _pos) {

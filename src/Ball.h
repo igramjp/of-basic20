@@ -18,4 +18,7 @@ class Ball {
         glm::vec2 pos;
         float radius;
         glm::vec2 speed;
+        float phase;
+        float phaseSpeed;
+        float stretchedRadius;
 };
